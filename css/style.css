@@ -199,6 +199,18 @@ img {
   color: #fff;
 }
 
+@media (max-width: 768px) {
+  .profile__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .profile__button {
+    width: 280px;
+    margin-left: 0;
+  }
+}
 .cards__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 280px);
@@ -269,15 +281,81 @@ img {
   color: #545454;
 }
 
-@media (max-width: 768px) {
-  .profile__container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+.modal {
+  padding: 15px;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  overflow-y: auto;
+}
+.modal__container {
+  margin: auto;
+  width: clamp(17.5rem, 12.415rem + 25.42vw, 26.875rem);
+  padding: 35px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  cursor: default;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+.modal__title {
+  font-weight: 900;
+  font-size: clamp(1.125rem, 0.922rem + 1.02vw, 1.5rem);
+}
+.modal__input {
+  padding: 0 10px 5px 0;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transition: border 0.5s ease-in-out;
+  -o-transition: border 0.5s ease-in-out;
+  transition: border 0.5s ease-in-out;
+}
+.modal__input:focus {
+  border-bottom-color: #000;
+}
+.modal__save-btn {
+  height: 50px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #000;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  -o-transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+@media (any-hover: hover) {
+  .modal__save-btn:hover {
+    -webkit-transform: translateY(3px);
+        -ms-transform: translateY(3px);
+            transform: translateY(3px);
   }
-  .profile__button {
-    width: 280px;
-    margin-left: 0;
-  }
+}
+.modal__close-btn {
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: -40px;
+  left: clamp(15.313rem, 9.041rem + 31.36vw, 26.875rem);
+}
+
+.modal-profile__title {
+  margin-bottom: 55px;
+}
+.modal-profile__name {
+  margin-bottom: 30px;
+}
+.modal-profile__descr {
+  margin-bottom: 50px;
 }

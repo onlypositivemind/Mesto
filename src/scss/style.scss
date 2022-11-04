@@ -107,6 +107,15 @@ img {
 		@extend %mainHover;
 	}
 }
+@media (max-width: 768px) {
+	.profile__container {
+		flex-direction: column;
+	}
+	.profile__button {
+		width: 280px;
+		margin-left: 0;
+	}
+}
 
 .cards {
 	&__container {
@@ -165,12 +174,76 @@ img {
 	}
 }
 
-@media (max-width: 768px) {
-	.profile__container {
+.modal {
+	padding: 15px;
+	position: fixed;
+	inset: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	color: #000;
+	display: flex;
+	cursor: pointer;
+	overflow-y: auto;
+
+	&__container {
+		margin: auto;
+		width: clamp(17.5rem, 12.415rem + 25.42vw, 26.875rem);
+		padding: 35px 20px;
+		background-color: #fff;
+		border-radius: 10px;
+		cursor: default;
+		display: flex;
 		flex-direction: column;
+		position: relative;
 	}
-	.profile__button {
-		width: 280px;
-		margin-left: 0;
+
+	&__title {
+		font-weight: 900;
+		font-size: clamp(1.125rem, 0.922rem + 1.02vw, 1.5rem);
+	}
+
+	&__input {
+		padding: 0 10px 5px 0;
+		font-size: 14px;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+		transition: border 0.5s ease-in-out;
+		&:focus {
+			border-bottom-color: #000;
+		}
+	}
+
+	&__save-btn {
+		height: 50px;
+		font-size: 18px;
+		color: #fff;
+		background-color: #000;
+		transition: transform 0.3s ease-in-out;
+		@media (any-hover: hover) {
+			&:hover {
+				transform: translateY(3px);
+			}
+		}
+	}
+
+	&__close-btn {
+		background-color: transparent;
+		cursor: pointer;
+		position: absolute;
+		top: -40px;
+		left: clamp(15.313rem, 9.041rem + 31.36vw, 26.875rem);
+	}
+}
+
+.modal-profile {
+	&__container {
+	}
+
+	&__title {
+		margin-bottom: 55px;
+	}
+	&__name {
+		margin-bottom: 30px;
+	}
+	&__descr {
+		margin-bottom: 50px;
 	}
 }
