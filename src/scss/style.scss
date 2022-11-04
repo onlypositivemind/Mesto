@@ -31,6 +31,11 @@ body {
 	border: 1px solid #fff;
 	border-radius: 2px;
 }
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 
 .header {
 	&__container {
@@ -40,6 +45,7 @@ body {
 
 	&__logo {
 		margin-bottom: clamp(1.938rem, 1.599rem + 1.69vw, 2.563rem);
+		width: auto;
 	}
 	&__border {
 		border-bottom: 1px solid #545454;
@@ -62,9 +68,6 @@ body {
 		width: 130px;
 		height: 130px;
 		& img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
 			border-radius: 50%;
 		}
 	}
@@ -80,7 +83,7 @@ body {
 	&__name {
 		margin-bottom: 16px;
 		font-weight: 500;
-		font-size: clamp(1.688rem, 1.179rem + 2.54vw, 2.625rem);
+		font-size: clamp(1.625rem, 1.083rem + 2.71vw, 2.625rem);
 	}
 
 	&__editor {
@@ -105,10 +108,69 @@ body {
 	}
 }
 
+.cards {
+	&__container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, 280px);
+		gap: 20px;
+		align-items: center;
+		justify-content: center;
+	}
+	&__card {
+		border-radius: 5px;
+		overflow: hidden;
+		display: grid;
+		grid-template-rows: 280px 80px;
+	}
+}
+.card {
+	&__image {
+		cursor: pointer;
+	}
+
+	&__content {
+		padding: 0 15px;
+		background-color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__buttons {
+		display: flex;
+		align-items: center;
+		gap: 7px;
+		& button {
+			background-color: transparent;
+			transition: transform 0.2s linear;
+			@media (any-hover: hover) {
+				&:hover {
+					transform: translateY(-2px);
+				}
+			}
+		}
+	}
+	&__title {
+		font-weight: 900;
+		font-size: 24px;
+		color: #000;
+	}
+}
+
 .footer {
 	&__copyright {
 		padding-bottom: clamp(2.25rem, 1.436rem + 4.07vw, 3.75rem);
 		font-size: clamp(0.875rem, 0.739rem + 0.68vw, 1.125rem);
 		color: #545454;
+	}
+}
+
+@media (max-width: 768px) {
+	.profile__container {
+		flex-direction: column;
+	}
+	.profile__button {
+		width: 280px;
+		margin-left: 0;
 	}
 }
