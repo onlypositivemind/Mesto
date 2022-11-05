@@ -110,18 +110,18 @@ body {
   min-height: 100%;
 }
 
-.profile__button, .profile__editor {
+.modal__close-btn, .profile__add-card, .profile__editor {
   -webkit-transition: opacity 0.3s ease-out;
   -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
 }
 @media (any-hover: hover) {
-  .profile__button:hover, .profile__editor:hover {
+  .modal__close-btn:hover, .profile__add-card:hover, .profile__editor:hover {
     opacity: 0.6;
   }
 }
 
-.profile__button, .profile__editor {
+.profile__add-card, .profile__editor {
   background-color: transparent;
   border: 1px solid #fff;
   border-radius: 2px;
@@ -163,6 +163,14 @@ img {
           align-items: center;
   gap: 30px;
 }
+@media (max-width: 768px) {
+  .profile__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
 .profile__image {
   width: 130px;
   height: 130px;
@@ -192,25 +200,19 @@ img {
 .profile__description {
   font-size: clamp(0.875rem, 0.739rem + 0.68vw, 1.125rem);
 }
-.profile__button {
+.profile__add-card {
   margin-left: auto;
   width: 150px;
   height: 50px;
   color: #fff;
 }
-
 @media (max-width: 768px) {
-  .profile__container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .profile__button {
+  .profile__add-card {
     width: 280px;
     margin-left: 0;
   }
 }
+
 .cards__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 280px);
@@ -347,15 +349,21 @@ img {
   cursor: pointer;
   position: absolute;
   top: -40px;
-  left: clamp(15.313rem, 9.041rem + 31.36vw, 26.875rem);
+  right: -40px;
+}
+@media (max-width: 425px) {
+  .modal__close-btn {
+    right: 0;
+  }
 }
 
-.modal-profile__title {
+.modal-profile__title, .modal-profile__url,
+.modal-card__title,
+.modal-card__url {
   margin-bottom: 55px;
 }
-.modal-profile__name {
+.modal-profile__name, .modal-profile__descr,
+.modal-card__name,
+.modal-card__descr {
   margin-bottom: 30px;
-}
-.modal-profile__descr {
-  margin-bottom: 50px;
 }

@@ -63,6 +63,9 @@ img {
 		display: flex;
 		align-items: center;
 		gap: 30px;
+		@media (max-width: 768px) {
+			flex-direction: column;
+		}
 	}
 	&__image {
 		width: 130px;
@@ -98,22 +101,17 @@ img {
 		font-size: clamp(0.875rem, 0.739rem + 0.68vw, 1.125rem);
 	}
 
-	&__button {
+	&__add-card {
 		margin-left: auto;
 		width: 150px;
 		height: 50px;
 		color: #fff;
 		@extend %buttonSettings;
 		@extend %mainHover;
-	}
-}
-@media (max-width: 768px) {
-	.profile__container {
-		flex-direction: column;
-	}
-	.profile__button {
-		width: 280px;
-		margin-left: 0;
+		@media (max-width: 768px) {
+			width: 280px;
+			margin-left: 0;
+		}
 	}
 }
 
@@ -229,21 +227,22 @@ img {
 		cursor: pointer;
 		position: absolute;
 		top: -40px;
-		left: clamp(15.313rem, 9.041rem + 31.36vw, 26.875rem);
+		right: -40px;
+		@extend %mainHover;
+		@media (max-width: 425px) {
+			right: 0;
+		}
 	}
 }
 
-.modal-profile {
-	&__container {
-	}
-
-	&__title {
+.modal-profile,
+.modal-card {
+	&__title,
+	&__url {
 		margin-bottom: 55px;
 	}
-	&__name {
-		margin-bottom: 30px;
-	}
+	&__name,
 	&__descr {
-		margin-bottom: 50px;
+		margin-bottom: 30px;
 	}
 }
