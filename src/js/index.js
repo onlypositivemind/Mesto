@@ -12,10 +12,15 @@ modalController({
 	btnClose: '.modal-card__close',
 });
 
+// Profile
 const saveProfileBtn = document.querySelector('.modal-profile__save'),
-	userName = document.querySelector('.profile__name'),
-	userDescription = document.querySelector('.profile__description'),
-	userImage = document.querySelector('[alt = "Profile image"]');
+	userNameElem = document.querySelector('.profile__name'),
+	userDescriptionElem = document.querySelector('.profile__description'),
+	userImageElem = document.querySelector('[alt = "Profile image"]');
+
+const inputName = document.querySelector('.modal-profile__name'),
+	inputDescr = document.querySelector('.modal-profile__descr'),
+	inputImageURL = document.querySelector('.modal-profile__url');
 
 const isImgLink = url => {
 	const reg = /^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gim;
@@ -23,35 +28,46 @@ const isImgLink = url => {
 };
 
 const setProfile = event => {
-	const modal = event.target.parentElement,
-		name = modal.querySelector('.modal-profile__name').value,
-		descr = modal.querySelector('.modal-profile__descr').value;
-	let imageURL = modal.querySelector('.modal-profile__url').value;
+	const name = inputName.value;
+	const descr = inputDescr.value;
+	let imageURL = inputImageURL.value;
 
 	if (name) {
-		userName.textContent = name;
+		userNameElem.textContent = name;
 
-		if (descr) userDescription.textContent = descr;
-		else userDescription.textContent = '';
+		if (descr) userDescriptionElem.textContent = descr;
+		else userDescriptionElem.textContent = '';
 
-		if (isImgLink(imageURL)) userImage.src = imageURL;
-		else imageURL = '';
+		if (isImgLink(imageURL)) userImageElem.src = imageURL;
+		else {
+			userImageElem.src = './img/placeholder-profile.png';
+			imageURL = '';
+		}
 
 		localStorage.setItem('user', JSON.stringify({ name, descr, imageURL }));
 	}
 };
 
-saveProfileBtn.addEventListener('click', setProfile);
-
 const getProfile = () => {
 	const user = JSON.parse(localStorage.getItem('user'));
 	if (user) {
-		userName.textContent = user.name;
-		userDescription.textContent = user.descr;
-		if (user.imageURL) userImage.src = imageURL;
+		inputName.value = userNameElem.textContent = user.name;
+
+		if (user.descr) {
+			inputDescr.value = userDescriptionElem.textContent = user.descr;
+		}
+
+		if (user.imageURL) {
+			inputImageURL.value = userImageElem.src = user.imageURL;
+		}
 	}
 };
 
 window.onload = () => {
 	getProfile();
 };
+
+saveProfileBtn.addEventListener('click', setProfile);
+// -----------------------------------------------------------------------------------//
+
+// Cards

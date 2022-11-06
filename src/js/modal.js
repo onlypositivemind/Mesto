@@ -1,6 +1,3 @@
-const clearingInputs = collection =>
-	collection.forEach(input => (input.value = ''));
-
 const modalController = ({ modal, btnOpen, btnClose }) => {
 	const buttonElem = document.querySelector(btnOpen),
 		modalElem = document.querySelector(modal),
@@ -24,7 +21,6 @@ const modalController = ({ modal, btnOpen, btnClose }) => {
 			window.removeEventListener('keydown', closeModal);
 
 			setTimeout(() => {
-				clearingInputs(inputs);
 				modalElem.style.visibility = 'hidden';
 			}, 300);
 		}
