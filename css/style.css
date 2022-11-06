@@ -314,6 +314,7 @@ img {
 .modal__title {
   font-weight: 900;
   font-size: clamp(1.125rem, 0.922rem + 1.02vw, 1.5rem);
+  text-align: center;
 }
 .modal__input {
   padding: 0 10px 5px 0;
