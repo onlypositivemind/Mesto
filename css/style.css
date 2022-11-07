@@ -92,6 +92,9 @@ body {
   background-color: #000;
   color: #fff;
 }
+body.hidden {
+  overflow: hidden;
+}
 
 .container {
   max-width: 910px;
@@ -108,6 +111,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   min-height: 100%;
+  position: relative;
 }
 
 .modal__close-btn, .profile__add-card, .profile__editor {
@@ -358,6 +362,14 @@ img {
   }
 }
 
+.modal-profile,
+.modal-card {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
 .modal-profile__title, .modal-profile__url,
 .modal-card__title,
 .modal-card__url {
@@ -367,4 +379,10 @@ img {
 .modal-card__name,
 .modal-card__descr {
   margin-bottom: 30px;
+}
+
+.modal-profile.hidden,
+.modal-card.hidden {
+  opacity: 0;
+  visibility: hidden;
 }

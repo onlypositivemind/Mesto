@@ -1,13 +1,8 @@
 const modalController = ({ modal, btnOpen, btnClose }) => {
 	const buttonElem = document.querySelector(btnOpen),
 		modalElem = document.querySelector(modal),
-		saveElem = document.querySelector('.modal__save-btn');
-	let inputs;
-
-	modalElem.style.cssText = `
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity 300ms ease-in-out; `;
+		saveElem = document.querySelector('.modal__save-btn'),
+		bodyElem = document.body;
 
 	const closeModal = event => {
 		if (
@@ -16,24 +11,15 @@ const modalController = ({ modal, btnOpen, btnClose }) => {
 			event.code === 'Escape' ||
 			event.target === saveElem
 		) {
-			modalElem.style.opacity = '0';
-			document.body.removeAttribute('style');
-			window.removeEventListener('keydown', closeModal);
-
-			setTimeout(() => {
-				modalElem.style.visibility = 'hidden';
-			}, 300);
+			bodyElem.classList.remove('hidden');
+			modalElem.classList.add('hidden');
 		}
 	};
 
 	const openModal = () => {
-		modalElem.style.opacity = '1';
-		modalElem.style.visibility = 'visible';
-		document.body.style.overflow = 'hidden';
-
+		bodyElem.classList.add('hidden');
+		modalElem.classList.remove('hidden');
 		window.addEventListener('keydown', closeModal);
-
-		inputs = modalElem.querySelectorAll('.modal__input');
 	};
 
 	buttonElem.addEventListener('click', openModal);
