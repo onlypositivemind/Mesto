@@ -1,7 +1,7 @@
 const modalController = ({ modal, btnOpen, btnClose }) => {
 	const buttonElem = document.querySelector(btnOpen),
 		modalElem = document.querySelector(modal),
-		saveElem = document.querySelector('.modal__save-btn'),
+		saveElem = document.querySelectorAll('.modal__save-btn'),
 		bodyElem = document.body;
 
 	const closeModal = event => {
@@ -9,7 +9,8 @@ const modalController = ({ modal, btnOpen, btnClose }) => {
 			event.target === modalElem ||
 			(btnClose && event.target.closest(btnClose)) ||
 			event.code === 'Escape' ||
-			event.target === saveElem
+			event.target === saveElem[0] ||
+			event.target === saveElem[1]
 		) {
 			bodyElem.classList.remove('hidden');
 			modalElem.classList.add('hidden');
