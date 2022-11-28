@@ -235,7 +235,7 @@ img {
   grid-template-rows: 280px 80px;
 }
 
-.card__image {
+.card img {
   cursor: pointer;
 }
 .card__content {
@@ -382,7 +382,18 @@ img {
 }
 
 .modal-profile.hidden,
-.modal-card.hidden {
+.modal-card.hidden,
+.modal-photo.hidden {
   opacity: 0;
   visibility: hidden;
+}
+
+.modal-photo__container {
+  padding: 15px;
+  width: clamp(18.75rem, 1.801rem + 84.75vw, 50rem);
+}
+@media (max-width: 950px) {
+  .modal-photo__container button {
+    right: 0;
+  }
 }

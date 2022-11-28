@@ -2,13 +2,14 @@ import isImgLink from '../helper/testLink.js';
 
 const cardsContainer = document.querySelector('.cards__container'),
 	inputCardDescr = document.querySelector('.modal-card__descr'),
-	inputCardURL = document.querySelector('.modal-card__url');
+	inputCardURL = document.querySelector('.modal-card__url'),
+	modalPhoto = document.querySelector('.modal-photo__image');
 
 const templateCard = (url, text, id) =>
 	`
 <div class="cards__card card" id="${id}">
-	<div class="card__image">
-		<img src=${url} alt=${text}>
+	<div>
+		<img src=${url} alt=${text} class="card__image" data-type="image">
 	</div>
 	<div class="card__content">
 		<p class="card__title">
@@ -130,6 +131,10 @@ document.addEventListener('click', event => {
 		handlerCardLike(target);
 		const img = target.closest('img');
 		handlerImage(target, img);
+	}
+
+	if (type === 'image') {
+		modalPhoto.src = target.src;
 	}
 });
 

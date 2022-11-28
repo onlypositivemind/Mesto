@@ -135,7 +135,7 @@ img {
 	}
 }
 .card {
-	&__image {
+	img {
 		cursor: pointer;
 	}
 
@@ -256,7 +256,19 @@ img {
 }
 
 .modal-profile.hidden,
-.modal-card.hidden {
+.modal-card.hidden,
+.modal-photo.hidden {
 	opacity: 0;
 	visibility: hidden;
+}
+
+.modal-photo__container {
+	padding: 15px;
+	width: clamp(18.75rem, 1.801rem + 84.75vw, 50rem);
+
+	button {
+		@media (max-width: 950px) {
+			right: 0;
+		}
+	}
 }

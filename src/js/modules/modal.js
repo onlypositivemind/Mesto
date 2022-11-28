@@ -1,5 +1,5 @@
 const modalController = ({ modal, btnOpen, btnClose }) => {
-	const buttonElem = document.querySelector(btnOpen),
+	const buttonElem = document.querySelectorAll(btnOpen),
 		modalElem = document.querySelector(modal),
 		saveElem = document.querySelectorAll('.modal__save-btn'),
 		bodyElem = document.body;
@@ -23,7 +23,7 @@ const modalController = ({ modal, btnOpen, btnClose }) => {
 		window.addEventListener('keydown', closeModal);
 	};
 
-	buttonElem.addEventListener('click', openModal);
+	buttonElem.forEach(button => button.addEventListener('click', openModal));
 	modalElem.addEventListener('click', closeModal);
 };
 
